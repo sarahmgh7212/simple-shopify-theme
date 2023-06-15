@@ -1,0 +1,17 @@
+<html>
+  <link
+    type="text/css"
+    href="{{ 'style.css' | asset_url }}"
+    rel="stylesheet"
+  >
+  <head>
+    {{ content_for_header }}
+  </head>
+  <body>
+    {% comment %} {% render 'header' %} {% endcomment %}
+    {{ content_for_layout }}
+    {% section 'slideshow' %}
+    {% section 'specs' %}
+    {% section 'footer' %}
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<div id="shopify-section-[id]" class="shopify-section slideshow">
+  <p>{{ section.settings.title }}</p>
+  <div>
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'slide' %}
+          <div class="slide" {{ block.shopify_attributes }}>
+            <img src="{{ block.settings.image | image_url: width:300 }}">
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Slideshow",
+  "tag": "section",
+  "class": "slideshow",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Slideshow",
+      "default": "default slideshow"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Slide",
+      "type": "slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
